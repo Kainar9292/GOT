@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import {ListGroupItem, ListGroup, Term} from '../randomChar/randomChar';
+import gotService from '../../services/gotService';
+
 
 const CharBlock = styled.div`
     background-color: #fff;
@@ -21,26 +23,55 @@ const SelectError = styled.div`
 
 export default class CharDetails extends Component {
 
+    gotService = new gotService();
+
+    state = {
+        char: null
+    }
+
+    componentDidMount() {
+        this.updateChar();
+    }
+
+    updateChar() {
+        const {charId} = this.props;
+        if (!charId) {
+            return;
+        }
+
+        this.gotService.getCharacter(charId)
+            .then((char) => {
+                this.setState({char})
+            })
+    }
+
     render() {
+
+        if (!this.state.char) {
+            return <span>Please select a character</span>
+        }
+
+        const {name, gender, born, died, culture} = this.state.char;
+
         return (
             <CharBlock>
-                <h4>John Snow</h4>
+                <h4>{name}</h4>
                 <ListGroup>
                     <ListGroupItem>
                         <Term>Gender</Term>
-                        <span>male</span>
+                        <span>{gender}</span>
                     </ListGroupItem>
                     <ListGroupItem>
                         <Term>Born</Term>
-                        <span>1783</span>
+                        <span>{born}</span>
                     </ListGroupItem>
                     <ListGroupItem>
                         <Term>Died</Term>
-                        <span>1820</span>
+                        <span>{died}</span>
                     </ListGroupItem>
                     <ListGroupItem>
                         <Term>Culture</Term>
-                        <span>First</span>
+                        <span>{culture}</span>
                     </ListGroupItem>
                 </ListGroup>
             </CharBlock>

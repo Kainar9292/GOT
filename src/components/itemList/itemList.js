@@ -27,7 +27,7 @@ export default class ItemList extends Component {
                 <ListGroupItem 
                     Cursor 
                     key={i}
-                    // onClick={this.props.onCharSelected(i)}
+                    onClick={ () => this.props.onCharSelected(i)}
                     >
                     {item.name}
                 </ListGroupItem>

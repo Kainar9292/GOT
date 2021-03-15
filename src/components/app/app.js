@@ -20,7 +20,8 @@ const ToggleRandom = styled.button`
 
 export default class App  extends Component {
     state = {
-        visible: true
+        visible: true,
+        selectedChar: 100
     }
 
     randomVisible = () => {
@@ -28,6 +29,12 @@ export default class App  extends Component {
             return {
                 visible: !state.visible
             }
+        })
+    }
+
+    onCharSelected = (id) => {
+        this.setState({
+            selectedChar: id
         })
     }
 
@@ -48,10 +55,10 @@ export default class App  extends Component {
                     <ToggleRandom onClick={this.randomVisible}>Click to hide random</ToggleRandom>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList onCharSelected={this.onCharSelected} />
                         </Col>
                         <Col md='6'>
-                            <CharDetails />
+                            <CharDetails charId={this.state.selectedChar}/>
                         </Col>
                     </Row>
                 </Container>
