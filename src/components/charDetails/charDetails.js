@@ -6,6 +6,7 @@ const CharBlock = styled.div`
     background-color: #fff;
     padding: 25px 25px 15px 25px;
     margin-bottom: 40px;
+    border-radius: 0.25rem;
     h4 {
         margin-bottom: 20px;
         text-align: center;
