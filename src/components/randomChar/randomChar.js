@@ -12,6 +12,7 @@ const RandomBlock = styled.div`
         h4 {
             margin-bottom: 20px;
             text-align: center;
+            font-size: 1.3rem;
         }
 `;
 

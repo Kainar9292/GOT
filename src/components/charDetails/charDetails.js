@@ -15,11 +15,11 @@ const CharBlock = styled.div`
     }
 `;
 
-const SelectError = styled.div`
-        color: #fff;
-        text-align: center;
-        font-size: 26px;
-`;
+// const SelectError = styled.div`
+//         color: #fff;
+//         text-align: center;
+//         font-size: 26px;
+// `;
 
 export default class CharDetails extends Component {
 
@@ -33,6 +33,14 @@ export default class CharDetails extends Component {
         this.updateChar();
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.charId !== prevProps.charId) {
+            this.updateChar();
+            
+        }
+        
+    }
+
     updateChar() {
         const {charId} = this.props;
         if (!charId) {
@@ -42,7 +50,9 @@ export default class CharDetails extends Component {
         this.gotService.getCharacter(charId)
             .then((char) => {
                 this.setState({char})
+                
             })
+            // const d = this.ffo.bar;
     }
 
     render() {
