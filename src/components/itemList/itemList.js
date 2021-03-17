@@ -40,7 +40,7 @@ export default class ItemList extends Component {
         const {charList} = this.state;
 
         if (!charList) {
-            return Spinner
+            return <Spinner/>
         }
 
         const items = this.renderItems(charList);
