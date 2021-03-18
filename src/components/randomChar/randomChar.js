@@ -57,12 +57,10 @@ export default class RandomChar extends Component {
     }
 
     componentDidMount() {
-        console.log('monting');
         this.updateChar();
         this.timerID = setInterval(this.updateChar, 1500);
     }
     componentWillUnmount() {
-        console.log('unmonting');
         clearInterval(this.timerID);
     }
 
@@ -90,7 +88,6 @@ export default class RandomChar extends Component {
     }
 
     render() {  
-        console.log('render');
         const {char, loading, error} = this.state;
 
         const errorMessage = error ? <ErrorMessage/> : null;

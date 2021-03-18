@@ -21,13 +21,15 @@ export default class ItemList extends Component {
             })
     }
 
+
+
     renderItems(arr) {
         return arr.map((item, i) => {
             return (
                 <ListGroupItem 
                     Cursor 
-                    key={i}
-                    onClick={ () => this.props.onCharSelected(41 + i)}
+                    key={item.id}
+                    onClick = {() => this.props.onCharSelected(item.id)}
                     >
                     {item.name}
                 </ListGroupItem>

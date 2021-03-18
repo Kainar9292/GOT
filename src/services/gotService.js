@@ -47,13 +47,18 @@ export default class GotService {
         }
     }
 
+    assignId(id) {
+        return id.match(/\d/g).join('')
+    }
+
     _transformCharacter = (char) => {
         return {
             name: this.isSet(char.name),
             gender: this.isSet(char.gender),
             born: this.isSet(char.born),
             died: this.isSet(char.died),
-            culture: this.isSet(char.culture)
+            culture: this.isSet(char.culture),
+            id: this.assignId(char.url)
         }
     }
 
