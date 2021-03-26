@@ -59,6 +59,22 @@ export default class App  extends Component {
                     </Row>
                     <ToggleRandom onClick={this.randomVisible}>Click to hide random</ToggleRandom>
                     <CharacterPage/> 
+                    {/* <Row>
+                        <Col md='6'>
+                            <ItemList onCharSelected={this.onCharSelected} />
+                        </Col>
+                        <Col md='6'>
+                            <CharDetails charId={this.state.selectedChar}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md='6'>
+                            <ItemList onCharSelected={this.onCharSelected} />
+                        </Col>
+                        <Col md='6'>
+                            <CharDetails charId={this.state.selectedChar}/>
+                        </Col>
+                    </Row> */}
                 </Container>
             </>
         );

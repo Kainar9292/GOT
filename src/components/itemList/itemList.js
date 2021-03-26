@@ -1,27 +1,23 @@
 import React, {Component} from 'react';
 import Spinner from 'reactstrap/lib/Spinner';
-import gotService from '../../services/gotService';
 import {ListGroupItem, ListGroup} from '../randomChar/randomChar';
 
 
 export default class ItemList extends Component {
 
-    gotService = new gotService();
-
     state = {
-        charList: null
+        itemList: null
     }
 
     componentDidMount() {
-        this.gotService.getAllCharacters()
-            .then((charList) => {
+        const {getData} = this.props;
+        getData()
+            .then((itemList) => {
                 this.setState({
-                    charList
+                    itemList
                 })
             })
     }
-
-
 
     renderItems(arr) {
         return arr.map((item, i) => {
@@ -39,13 +35,12 @@ export default class ItemList extends Component {
 
     render() {
 
-        const {charList} = this.state;
-
-        if (!charList) {
+        const {itemList} = this.state;
+        if (!itemList) {
             return <Spinner/>
         }
 
-        const items = this.renderItems(charList);
+        const items = this.renderItems(itemList);
 
         return (
             <ListGroup>
